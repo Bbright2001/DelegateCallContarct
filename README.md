@@ -31,48 +31,42 @@ This project demonstrates the difference between `call` and `delegatecall` in So
 
 ## Screenshots of Storage before and after delegate call and call
 
-<p align="center">
-  <img src="images/storage.png" alt="Storage after delegatecall and call function" width="600"/>
-</p>
+![Test Image](images/storage.png)
 
+<hr>
 
+## Answers to Classwork Questions
 
----
-
-## ❓ Answers to Classwork Questions
-
-### 1️⃣ What differences did you observe between `call` and `delegatecall`?
+###What differences did you observe between `call` and `delegatecall`?
 
 - `call`: Executes the target contract’s code in **its own** context. Storage changes affect **Contract B**, and `msg.sender` becomes **Contract A**.
 - `delegatecall`: Runs the target’s code in **the calling contract’s** context. Storage and `msg.sender` refer to **Contract A**.
 
----
-
-### 2️⃣ Why must the storage layout in ContractA and ContractB be exactly the same when using `delegatecall`?
+<hr>
+### Why must the storage layout in ContractA and ContractB be exactly the same when using `delegatecall`?
 
 - `delegatecall` writes to the caller’s (Contract A's) storage.
-- If layouts don’t match, data will be written to **wrong slots**, leading to corrupted state.
-- Matching layouts ensures Contract B’s logic updates the correct variables in Contract A.
+- If layouts don’t match, data will be written to **wrong slots**, leading to corrupted state which can lead to reentracy from intruders.
 
----
+<hr>
 
-### 3️⃣ Which method would you use for creating upgradeable contracts and why?
+###Which method would you use for creating upgradeable contracts and why?
 
 - ✅ **Use `delegatecall`**
 - It separates **logic (Contract B)** from **storage (Contract A)**.
-- This is the core of upgradeable patterns like **UUPS** and **Transparent Proxy**, where storage must persist across upgrades.
+- Reusabibility and Upgradability.
 
----
+<hr>
 
 ## 🧪 How to Run This Project
 
 ```bash
-# 1. Start a local anvil chain
-anvil
+# 1. create a .env file
 
-# 2. In a new terminal, export RPC and private key
-export RPC_URL=http://127.0.0.1:8545
-export PRIVATE_KEY=<any key from anvil>
+# 2. store yor RPC URL and private key in the .env
+
+# 3. In the terminal, source your .env
+ source .env
 
 # 3. Run the deployment script
-forge script script/Contract.s.sol:DeployAndRun --rpc-url $RPC_URL --private-key $PRIVATE_KEY --broadcast
+forge script script/Contract.s.sol --rpc-url $RPC_URL  --private-key $PRIVATE_KEY --broadcast
