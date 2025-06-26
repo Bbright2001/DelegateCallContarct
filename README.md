@@ -9,7 +9,7 @@ This project demonstrates the difference between `call` and `delegatecall` in So
 - **ContractA.sol**: The main contract that performs both `call` and `delegatecall`.
 - **ContractB.sol**: Contains the `setVars(uint256)` logic to be called or delegate-called; also uses contract A storage.
 
----
+
 <hr>
 
 ## 🚀 Deployment Details
@@ -18,19 +18,22 @@ This project demonstrates the difference between `call` and `delegatecall` in So
 - **Chain ID**: `11155111`  
 - **Deployed via**: Foundry script with `--broadcast` enabled
 
----
+<hr>
 
 ## 📌 Deployed Addresses
 
 - **Contract A**: `0xde92aaa7e6f83f65d28e861db42b06bbf6360440`  
 - **Contract B**: `0xb9435810d853a60dee2c9699e6f96564a0b89eab`
 
----
+
 <hr>
 
 
 ## Screenshots of Storage before and after delegate call and call
-<img src="images/screenshot.png" alt="Screenshot" width="400"/>
+
+<p align="center">
+  <img src="images/storage.png" alt="Storage after delegatecall and call function" width="600"/>
+</p>
 
 
 
