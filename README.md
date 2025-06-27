@@ -31,7 +31,7 @@ This project demonstrates the difference between `call` and `delegatecall` in So
 
 ## Screenshots of Storage before and after delegate call and call
 
-![Storage](images/storage.png)
+![Storage](storage.png)
 
 <hr>
 
